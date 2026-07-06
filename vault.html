@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Netflix Vault</title>
+    <style>
+        body {
+            background-color: #141414;
+            color: white;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        /* Hero Billboard Banner */
+        .billboard {
+            height: 70vh;
+            background: linear-gradient(to top, #141414 5%, transparent 90%), 
+                        linear-gradient(to right, rgba(20,20,20,0.8), rgba(20,20,20,0)),
+                        url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1200') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 4%;
+            box-sizing: border-box;
+        }
+        .billboard h1 { font-size: 4rem; margin-bottom: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+        .billboard p { font-size: 1.4rem; max-width: 600px; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); color: #cccccc; }
+        
+        /* Layout Rows */
+        .row { padding: 1.5rem 4%; box-sizing: border-box; }
+        .row-title { font-size: 1.6rem; font-weight: bold; margin-bottom: 15px; color: #e50914; }
+        
+        /* Horizontal Scrolling Card Container */
+        .card-slider {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+        }
+        .card-slider::-webkit-scrollbar { display: none; } /* Hide scrollbar for Chrome/Safari */
+        
+        .netflix-card {
+            min-width: 280px;
+            height: 160px;
+            background-color: #222;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .netflix-card img { width: 100%; height: 100%; object-fit: cover; }
+        .netflix-card:hover { transform: scale(1.05); z-index: 2; }
+        .card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 15px 10px 10px 10px;
+            font-size: 0.95rem;
+        }
+        .card-date { color: #aaa; font-size: 0.8rem; margin-bottom: 3px; }
+
+        /* Quiz Box Styling */
+        .quiz-box {
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid #333;
+            max-width: 500px;
+        }
+        .quiz-option {
+            background-color: #333;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .quiz-option:hover { background-color: #444; }
+        
+        /* Custom Spotify Wrap */
+        .spotify-wrapper { padding: 1rem 4%; }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section (Change the background URL above to your main couple photo) -->
+    <div class="billboard">
+        <h1>Season 2 Completed</h1>
+        <p>A beautiful story of 730 days, countless laughs, and memories built together. Happy 2nd Anniversary, my love!</p>
+    </div>
+
+    <!-- Music Station -->
+    <div class="spotify-wrapper">
+        <h2 class="row-title">Our Playlist 🎶</h2>
+        <!-- Replace this source link with your own Spotify embed link if you wish! -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/vuVn1r0DpeE?si=GdKb_3_05TChnwXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <!-- Row 1: Memory Lane Timeline -->
+    <div class="row">
+        <h2 class="row-title">Trending Moments (Our Timeline) 🕰️</h2>
+        <div class="card-slider">
+            <div class="netflix-card">
+                <!-- Replace placeholders with paths like images/photo1.jpg later -->
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=400" alt="First Date">
+                <div class="card-info">
+                    <div class="card-date">Episode 1</div>
+                    <strong>The Day We Met</strong>
+                </div>
+            </div>
+            <div class="netflix-card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=400" alt="First Trip">
+                <div class="card-info">
+                    <div class="card-date">Episode 2</div>
+                    <strong>Our First Getaway</strong>
+                </div>
+            </div>
+            <div class="netflix-card">
+                <img src="https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?q=80&w=400" alt="Anniversary 1">
+                <div class="card-info">
+                    <div class="card-date">Season 1 Finale</div>
+                    <strong>1 Year Down!</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 2: Photo Album Grid -->
+    <div class="row">
+        <h2 class="row-title">Watch Again (Our Photo Album) 📸</h2>
+        <div class="card-slider" id="photo-album">
+            <!-- Add as many cards as you want here! -->
+            <div class="netflix-card"><img src="https://via.placeholder.com/280x160/333/fff?text=Us+1"></div>
+            <div class="netflix-card"><img src="https://via.placeholder.com/280x160/333/fff?text=Us+2"></div>
+            <div class="netflix-card"><img src="https://via.placeholder.com/280x160/333/fff?text=Us+3"></div>
+            <div class="netflix-card"><img src="https://via.placeholder.com/280x160/333/fff?text=Us+4"></div>
+        </div>
+    </div>
+
+<!-- Row 3: Our Videos -->
+    <div class="row">
+        <h2 class="row-title">Director's Cut (Our Videos) 🎬</h2>
+        <div class="card-slider">
+            
+            <!-- Video 1 -->
+            <video width="320" height="180" controls style="border-radius: 8px; background-color: #000; box-shadow: 0 4px 8px rgba(0,0,0,0.4);">
+                <source src="videos/funny-moment.mp4" type="video/mp4">
+                Your browser doesn't support HTML5 video.
+            </video>
+
+            <!-- Video 2 -->
+            <video width="320" height="180" controls style="border-radius: 8px; background-color: #000; box-shadow: 0 4px 8px rgba(0,0,0,0.4);">
+                <source src="videos/vacation-clip.mp4" type="video/mp4">
+                Your browser doesn't support HTML5 video.
+            </video>
+
+        </div>
+    </div>
+
+    <!-- Row 4: Interactive Mini Quiz -->
+    <div class="row">
+        <h2 class="row-title">Interactive Special: The Anniversary Quiz 🎮</h2>
+        <div class="quiz-box">
+            <h3 id="question-text">Where did we have our very first official date?</h3>
+            <div id="options-container">
+                <div class="quiz-option" onclick="answerQuiz(false)">The Local Coffee Shop</div>
+                <div class="quiz-option" onclick="answerQuiz(true)">That Small Cozy Pizza Place</div>
+                <div class="quiz-option" onclick="answerQuiz(false)">The Central Park Walk</div>
+            </div>
+            <p id="quiz-feedback" style="margin-top: 15px; font-weight: bold; color: #4cd137;"></p>
+        </div>
+    </div>
+
+    <script>
+        function answerQuiz(isCorrect) {
+            let feedback = document.getElementById("quiz-feedback");
+            if(isCorrect) {
+                feedback.innerHTML = "Correct! 🍕 You actually remembered! You unlocked a virtual hug. ❤️";
+                feedback.style.color = "#4cd137";
+            } else {
+                feedback.innerHTML = "Wrong answer! Come on, think back! 😤 Try again.";
+                feedback.style.color = "#e50914";
+            }
+        }
+    </script>
+</body>
+</html>
